@@ -1,0 +1,52 @@
+
+> client@0.0.0 lint
+> eslint .
+
+
+C:\Users\gowda\OneDrive\Desktop\Hotel-Booking\client\src\App.jsx
+  24:8  error  Unexpected constant truthiness on the left-hand side of a `&&` expression  no-constant-binary-expression
+
+C:\Users\gowda\OneDrive\Desktop\Hotel-Booking\client\src\components\Navbar.jsx
+  27:17  error  'isSignedIn' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             no-unused-vars
+  32:36  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  30 |
+  31 |   useEffect(() => {
+> 32 |     if (location.pathname !== "/") setIsScrolled(true);
+     |                                    ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  33 |     else setIsScrolled(false);
+  34 |
+  35 |     const handleScroll = () => setIsScrolled(window.scrollY > 10);  react-hooks/set-state-in-effect
+
+C:\Users\gowda\OneDrive\Desktop\Hotel-Booking\client\src\components\Title.jsx
+  3:33  error  'align' is defined but never used  no-unused-vars
+  3:40  error  'font' is defined but never used   no-unused-vars
+
+C:\Users\gowda\OneDrive\Desktop\Hotel-Booking\client\src\pages\RoomDetails.jsx
+  19:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  17 |     const roomData = roomsDummyData.find((room) => room._id === id);
+  18 |     if (roomData) {
+> 19 |       setRoom(roomData);
+     |       ^^^^^^^ Avoid calling setState() directly within an effect
+  20 |       setMainImage(roomData.images[0]);
+  21 |     }
+  22 |   }, [id]);  react-hooks/set-state-in-effect
+
+C:\Users\gowda\OneDrive\Desktop\Hotel-Booking\client\src\pages\hotelOwner\ListRoom.jsx
+  6:19  error  'useState' is not defined  no-undef
+
+✖ 7 problems (7 errors, 0 warnings)
+
